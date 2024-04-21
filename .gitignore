@@ -1,0 +1,10 @@
+.vs
+.vcxproj
+.vcxproj.filters
+.vcxproj.user
+DATABASE.sln
+DATABASE.vcxproj
+DATABASE.vcxproj.filters
+DATABASE.vcxproj.user
+/Debug
+/x64/Debug
