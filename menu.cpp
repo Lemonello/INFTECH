@@ -1,6 +1,6 @@
 #include"menu.h"
 #include"Component.h"
-
+#include"file.h"
 #include<iostream>
 
 using std::cout;
@@ -116,12 +116,18 @@ void menu(Component* arr, int& size_arr)
 	switch (command)
 	{
 	case OPEN_FILE:
-	{
+	{	
+		show_name_file();
+		char file_name[16];
+		get_filename(file_name);
+		open_file(file_name);
+		read_data(arr, file_name);
 		break;
 	}
 	case SHOW_DATA:
 	{
-		
+		show_data(arr, size_arr);
+		system("pause");
 		break;
 	}
 	case WRITE_TO_FILE:

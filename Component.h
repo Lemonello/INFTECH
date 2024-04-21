@@ -10,13 +10,13 @@ namespace streams
 	using std::ofstream;
 }
 
-const int MAKER_SIZE = 16;
+const int MAX_SIZE = 16;
 
 using namespace streams;
 
 struct Component
 {
-	char maker[MAKER_SIZE];
+	char maker[MAX_SIZE];
 	int count{}, code{}, price;
 	// Для массива. 0 - элемент занят, 1 - свободен, 
 	//готов к заполнению
