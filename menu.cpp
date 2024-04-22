@@ -128,6 +128,7 @@ void menu(Component* arr, int& size_arr)
 	case SHOW_DATA:
 	{
 		show_data(arr, size_arr);
+
 		system("pause");
 		break;
 	}
@@ -140,7 +141,11 @@ void menu(Component* arr, int& size_arr)
 	}
 	case WRITE_NEW_FILE:
 	{
-		
+		show_name_file();
+		char filename[16];
+		get_filename(filename);
+		data_to_file(arr, filename, size_arr);
+		save_filename(true, filename);
 		break;
 	}
 	default:
