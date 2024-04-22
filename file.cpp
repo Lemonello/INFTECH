@@ -62,3 +62,36 @@ void show_data(Component* arr, int size_arr)
 	for (int i = 0; i < 65; i++) std::cout << "-";
 	std::cout << std::endl;
 }
+
+
+void save_filename(int is_save, char* file)
+{	
+	static char filename[16];
+	//true, если нужно сохранить файл
+	if (is_save == true)
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			filename[i] = file[i];
+		}
+	}
+	//false, если нужно получить имя файла
+	if (is_save == false)
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			file[i] = filename[i];
+		}
+	}
+}
+
+void data_to_file(Component* arr, char* filename, int size_arr)
+{
+	std::ofstream fout;
+	fout.open(filename);
+	for (int i = 0; i < size_arr; i++)
+	{
+		fout << arr[i];
+	}
+	fout.close();
+}

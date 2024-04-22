@@ -122,6 +122,7 @@ void menu(Component* arr, int& size_arr)
 		get_filename(file_name);
 		open_file(file_name);
 		read_data(arr, file_name);
+		save_filename(true, file_name);
 		break;
 	}
 	case SHOW_DATA:
@@ -132,7 +133,9 @@ void menu(Component* arr, int& size_arr)
 	}
 	case WRITE_TO_FILE:
 	{
-		
+		char file[16];
+		save_filename(false, file);
+		data_to_file(arr, file, size_arr);
 		break;
 	}
 	case WRITE_NEW_FILE:

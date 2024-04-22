@@ -33,6 +33,10 @@ ifstream& operator>>(ifstream& stream, Component& ob)
 }
 
 ofstream& operator<<(ofstream& stream, Component ob)
-{
+{	
+	stream << ob.maker << std::endl;
+	stream << ob.count << std::endl;
+	stream << ob.code << std::endl;
+	stream << ob.price << std::endl;
 	return stream;
 }
