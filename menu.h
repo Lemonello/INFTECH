@@ -24,3 +24,4 @@ enum Commands
 void menu(Component* arr, int& size_arr);
 void show_menu();
 int get_command();
+int get_edit_command();

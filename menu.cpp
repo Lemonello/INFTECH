@@ -1,6 +1,7 @@
 #include"menu.h"
 #include"Component.h"
 #include"file.h"
+#include"tasks.h"
 #include<iostream>
 
 using std::cout;
@@ -128,7 +129,8 @@ void menu(Component* arr, int& size_arr)
 	case SHOW_DATA:
 	{
 		show_data(arr, size_arr);
-
+		int command = get_edit_command();
+		tasks(arr, command, size_arr);
 		system("pause");
 		break;
 	}
