@@ -66,6 +66,7 @@ void show_data(Component* arr, int size_arr)
 
 void save_filename(int is_save, char* file)
 {	
+	//static для сохранения данных при работе
 	static char filename[16];
 	//true, если нужно сохранить файл
 	if (is_save == true)

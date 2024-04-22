@@ -27,7 +27,9 @@ void tasks(Component* arr, int command, int size_arr)
 	}
 	case DEL:
 	{
-		
+		int number = get_line_number(size_arr);
+		del_data(arr, number);
+		shrink_to_left(arr, size_arr, number);
 		break;
 	}
 	case SORT:
@@ -51,6 +53,8 @@ int get_line_number(int max_size)
 {
 	std::cout << "Введите строку:" << std::endl;
 	int number = max_size;
+	//Защита от ввода неправильной строки
+	//Выход из программы при вводе -1
 	while (number >= max_size && number != -1)
 	{
 		std::cin >> number;
@@ -98,3 +102,31 @@ void edit_data(Component* arr, int size_arr)
 	edit_ob(arr[number_line], edit_c);
 }
 
+void del_data(Component* arr, int index)
+{	
+	null_el(arr[index]);
+}
+
+void null_el(Component& ob)
+{
+	char null_arr[16]{ "00000000000" };
+	for (int i = 0; i < 16; i++)
+	{
+		ob.maker[i] = null_arr[i];
+	}
+	ob.count = NULL;
+	ob.code = NULL;
+	ob.price = NULL;
+}
+
+void shrink_to_left(Component* arr, int size_arr, int index)
+{
+	//i+1 для предотвращения выхода за пределы массива
+	for (int i = index; (i+1) < size_arr; i++)
+	{
+		arr[i] = arr[i + 1];
+	}
+	//Обуляем последний элемент массива, чтобы не было дублирований
+	int null_element = (size_arr - 1);
+	null_el(arr[null_element]);
+}
