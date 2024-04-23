@@ -123,7 +123,7 @@ void menu(Component* arr, int& size_arr)
 		char file_name[16];
 		get_filename(file_name);
 		open_file(file_name);
-		read_data(arr, file_name);
+		read_data(arr, file_name, size_arr);
 		save_data(SAVE, file_name);
 		break;
 	}

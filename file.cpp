@@ -1,5 +1,6 @@
 #include"Component.h"
 #include"file.h"
+#include"tasks.h"
 #include"static.h"
 #include<iostream>
 #include<fstream>
@@ -39,15 +40,15 @@ bool is_open(char* filename)
 	return open;
 }
 
-void read_data(Component* arr, char* filename)
+void read_data(Component* arr, char* filename, int size_arr)
 {	
 	std::ifstream fin;
 	fin.open(filename);
-	int index = 0;
-	while (!fin.eof())
+	int index;
+	for (int i = 0; i < size_arr; i++)
 	{
-		fin >> arr[index];
-		++index;
+		fin >> arr[i];
+		index = i;
 	}
 	save_data(SAVE, index);
 	fin.close();
@@ -55,13 +56,15 @@ void read_data(Component* arr, char* filename)
 
 void show_data(Component* arr, int size_arr)
 {	
-	for (int i = 0; i < 65; i++) std::cout << "-";
+	for (int i = 0; i < 70; i++) std::cout << "-";
 	std::cout << std::endl;
 	for (int i = 0; i < size_arr; i++)
-	{
+	{	
+		std::cout.width(5);
+		std::cout << i;
 		std::cout << arr[i];
 	}
-	for (int i = 0; i < 65; i++) std::cout << "-";
+	for (int i = 0; i < 70; i++) std::cout << "-";
 	std::cout << std::endl;
 }
 
@@ -75,4 +78,12 @@ void data_to_file(Component* arr, char* filename, int size_arr)
 		fout << arr[i];
 	}
 	fout.close();
+}
+
+void clear_arr(Component* arr, int size_arr)
+{
+	for (int i = 0; i < size_arr; i++)
+	{
+		null_el(arr[i]);
+	}
 }

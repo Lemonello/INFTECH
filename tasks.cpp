@@ -110,7 +110,7 @@ void del_data(Component* arr, int index)
 
 void null_el(Component& ob)
 {
-	char null_arr[16]{ "00000000000" };
+	char null_arr[16]{ "" };
 	for (int i = 0; i < 16; i++)
 	{
 		ob.maker[i] = null_arr[i];
