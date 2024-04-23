@@ -64,28 +64,6 @@ void show_data(Component* arr, int size_arr)
 }
 
 
-void save_filename(int is_save, char* file)
-{	
-	//static для сохранения данных при работе
-	static char filename[16];
-	//true, если нужно сохранить файл
-	if (is_save == true)
-	{
-		for (int i = 0; i < 16; i++)
-		{
-			filename[i] = file[i];
-		}
-	}
-	//false, если нужно получить имя файла
-	if (is_save == false)
-	{
-		for (int i = 0; i < 16; i++)
-		{
-			file[i] = filename[i];
-		}
-	}
-}
-
 void data_to_file(Component* arr, char* filename, int size_arr)
 {
 	std::ofstream fout;
