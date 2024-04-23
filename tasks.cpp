@@ -1,4 +1,5 @@
 #include"tasks.h"
+#include"static.h"
 #include<iostream>
 
 const char dot_space[3] = ". ";
@@ -126,7 +127,7 @@ void shrink_to_left(Component* arr, int size_arr, int index)
 	{
 		arr[i] = arr[i + 1];
 	}
-	//Обуляем последний элемент массива, чтобы не было дублирований
+	//Обнуляем последний элемент массива, чтобы не было дублирований
 	int null_element = (size_arr - 1);
 	null_el(arr[null_element]);
 }

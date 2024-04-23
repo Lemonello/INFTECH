@@ -124,7 +124,7 @@ void menu(Component* arr, int& size_arr)
 		get_filename(file_name);
 		open_file(file_name);
 		read_data(arr, file_name);
-		save_data(true, file_name);
+		save_data(SAVE, file_name);
 		break;
 	}
 	case SHOW_DATA:
@@ -138,7 +138,7 @@ void menu(Component* arr, int& size_arr)
 	case WRITE_TO_FILE:
 	{
 		char file[16];
-		save_data(false, file);
+		save_data(GET, file);
 		data_to_file(arr, file, size_arr);
 		break;
 	}
@@ -148,7 +148,7 @@ void menu(Component* arr, int& size_arr)
 		char filename[16];
 		get_filename(filename);
 		data_to_file(arr, filename, size_arr);
-		save_data(true, filename);
+		save_data(SAVE, filename);
 		break;
 	}
 	default:

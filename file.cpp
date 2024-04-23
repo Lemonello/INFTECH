@@ -1,5 +1,6 @@
 #include"Component.h"
 #include"file.h"
+#include"static.h"
 #include<iostream>
 #include<fstream>
 
@@ -48,6 +49,7 @@ void read_data(Component* arr, char* filename)
 		fin >> arr[index];
 		++index;
 	}
+	save_data(SAVE, index);
 	fin.close();
 }
 
