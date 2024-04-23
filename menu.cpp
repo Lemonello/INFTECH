@@ -119,6 +119,7 @@ void menu(Component* arr, int& size_arr)
 	{
 	case OPEN_FILE:
 	{	
+		clear_arr(arr, size_arr);
 		show_name_file();
 		char file_name[16];
 		get_filename(file_name);

@@ -23,7 +23,7 @@ void tasks(Component* arr, int command, int size_arr)
 	}
 	case ADD:
 	{
-		
+		add_data(arr, size_arr);
 		break;
 	}
 	case DEL:
@@ -106,6 +106,35 @@ void edit_data(Component* arr, int size_arr)
 void del_data(Component* arr, int index)
 {	
 	null_el(arr[index]);
+}
+
+bool is_possible(int size_arr)
+{
+	int feauture_index; 
+	save_data(GET, feauture_index);
+	feauture_index++;
+	//++ потому что функция save_data возвращает 
+	//текущее положение индекса, т.е. индекс уже занятого
+	//элемента массива, а нам нужен следующий
+	if (feauture_index >= size_arr) return false;
+	return true;
+}
+
+void add_data(Component* arr, int size_arr)
+{
+	bool is_pos = is_possible(size_arr);
+	if (!is_pos)
+	{
+		std::cout << "Нет места в массиве" << std::endl;
+		return;
+	}
+	int ind_arr;
+	save_data(GET, ind_arr);
+	ind_arr++;
+	//Увеличиваем, потому что предыдущий уже занят
+	//Проверку на границы уже выполнила функция is_possible
+	std::cin >> arr[ind_arr];
+	save_data(SAVE, ind_arr);
 }
 
 void null_el(Component& ob)

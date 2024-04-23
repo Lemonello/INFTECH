@@ -44,8 +44,8 @@ void read_data(Component* arr, char* filename, int size_arr)
 {	
 	std::ifstream fin;
 	fin.open(filename);
-	int index;
-	for (int i = 0; i < size_arr; i++)
+	int index{-1};
+	for (int i = 0; !fin.eof() && i < size_arr; i++)
 	{
 		fin >> arr[i];
 		index = i;

@@ -3,7 +3,11 @@
 const char symb = '|';
 
 istream& operator>>(istream& stream, Component& ob)
-{
+{	
+	stream >> ob.maker;
+	stream >> ob.count;
+	stream >> ob.code;
+	stream >> ob.price;
 	return stream;
 }
 
