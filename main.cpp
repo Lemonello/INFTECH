@@ -2,7 +2,7 @@
 #include"menu.h"
 #include"file.h"
 
-Component comps[10]
+Component comps[6]
 {
 	{"Lenovo", 120, 001, 10},
 	{"Intel", 110, 002, 80},
@@ -15,7 +15,7 @@ Component comps[10]
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	int size_arr = 10;
+	int size_arr = 6;
 	while (true) menu(comps, size_arr);
 	return 0;
 }

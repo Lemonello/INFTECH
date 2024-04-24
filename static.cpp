@@ -28,7 +28,8 @@ void save_data(bool parameter, char* file)
 
 void save_data(bool parameter, int& index)
 {	
-	static int empty_index;
+	//6 - текущий размер массива, далее переменная меняется
+	static int empty_index{6};
 	//true, если нужно сохранить индекс 
 	if (parameter == SAVE) empty_index = index;
 	//false, если нужно получить индекс

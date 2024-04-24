@@ -157,6 +157,14 @@ void shrink_to_left(Component* arr, int size_arr, int index)
 		arr[i] = arr[i + 1];
 	}
 	//Обнуляем последний элемент массива, чтобы не было дублирований
+	int get_ind;
+	//Получаем текущий индекс
+	save_data(GET, get_ind);
+	//Минус 1, потому что удалили элемент-> можем добавлять
+	//следующие элементы массива с меньших индексов
+	get_ind--;
+	//Установка индекса с помощью функции
+	save_data(SAVE, get_ind);
 	int null_element = (size_arr - 1);
 	null_el(arr[null_element]);
 }
