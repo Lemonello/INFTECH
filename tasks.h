@@ -3,6 +3,14 @@
 #include"Component.h"
 #include"menu.h"
 
+enum EDITS
+{
+	MAKER = 1,
+	COUNT,
+	CODE,
+	PRICE
+};
+
 void tasks(Component* arr, int command, int size_arr);
 
 int get_line_number(int max_size);

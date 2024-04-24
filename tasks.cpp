@@ -1,16 +1,9 @@
 #include"tasks.h"
 #include"static.h"
+#include"sort.h"
 #include<iostream>
 
 const char dot_space[3] = ". ";
-
-enum EDITS
-{
-	MAKER = 1,
-	COUNT,
-	CODE,
-	PRICE
-};
 
 void tasks(Component* arr, int command, int size_arr)
 {
@@ -35,7 +28,7 @@ void tasks(Component* arr, int command, int size_arr)
 	}
 	case SORT:
 	{
-		
+		sort_data(arr, size_arr);
 		break;
 	}
 	case FIND:
