@@ -24,3 +24,9 @@ void add_data(Component* arr, int size_arr);
 
 void null_el(Component& ob);
 void shrink_to_left(Component* arr, int size_arr, int index);
+
+void show_maker_enter();
+void get_find(char* find, int size_arr);
+bool is_equal(Component ob, char* find);
+void find_ob(Component* arr, int size_arr);
+

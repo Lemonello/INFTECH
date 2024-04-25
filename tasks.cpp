@@ -33,7 +33,7 @@ void tasks(Component* arr, int command, int size_arr)
 	}
 	case FIND:
 	{
-		
+		find_ob(arr, size_arr);
 		break;
 	}
 	case EXIT_COM:
@@ -142,6 +142,8 @@ void null_el(Component& ob)
 	ob.price = NULL;
 }
 
+//Функция сдвигает все элементы массива влево после удаления элемента
+
 void shrink_to_left(Component* arr, int size_arr, int index)
 {
 	//i+1 для предотвращения выхода за пределы массива
@@ -160,4 +162,43 @@ void shrink_to_left(Component* arr, int size_arr, int index)
 	save_data(SAVE, get_ind);
 	int null_element = (size_arr - 1);
 	null_el(arr[null_element]);
+}
+
+void show_maker_enter()
+{
+	std::cout << "Введите искомую строку" << std::endl;
+}
+
+void get_find(char* find, int size_arr)
+{
+	char get[20];
+	std::cin >> get;
+	for (int i = 0; i < size_arr; i++)
+	{
+		find[i] = get[i];
+	}
+}
+
+bool is_equal(Component ob, char *find)
+{
+	int result = strcmp(ob.maker,find );
+	if (result == NULL) return true;
+	return false;
+}
+
+void find_ob(Component* arr, int size_arr)
+{
+	show_maker_enter();
+	char find[20];
+	get_find(find, 20);
+
+	for (int i = 0; i < size_arr; i++)
+	{
+		bool is_s = is_equal(arr[i], find);
+		if (is_s)
+		{
+			system("cls");
+			std::cout << arr[i];
+		}
+	}
 }
