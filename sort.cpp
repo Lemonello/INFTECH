@@ -1,6 +1,7 @@
 #include"sort.h"
 #include<iostream>
 #include<algorithm>
+#include<tuple>
 
 enum ORDER
 {
@@ -12,7 +13,10 @@ enum ORDER
 
 bool inc_comp_maker(Component ob1, Component ob2)
 {
-	return ob1.maker < ob2.maker;
+	int result = strcmp(ob1.maker, ob2.maker);
+	if (result == NULL) return false;
+	if (result < NULL) return  false;
+	if (result > NULL) return true;
 }
 
 bool inc_comp_count(Component ob1, Component ob2)
@@ -34,7 +38,10 @@ bool inc_comp_price(Component ob1, Component ob2)
 
 bool dec_comp_maker(Component ob1, Component ob2)
 {
-	return ob1.maker > ob2.maker;
+	int result = strcmp(ob1.maker, ob2.maker);
+	if (result == NULL) return false;
+	if (result < NULL) return  true;
+	if (result > NULL) return false;
 }
 
 bool dec_comp_count(Component ob1, Component ob2)
