@@ -36,6 +36,13 @@ void tasks(Component* arr, int command, int size_arr)
 		find_ob(arr, size_arr);
 		break;
 	}
+	case AVERAGE:
+	{	
+		double av_price=0;
+		average_price(arr, size_arr, av_price);
+		show_average(av_price);
+		break;
+	}
 	case EXIT_COM:
 	{
 		break;
@@ -201,4 +208,24 @@ void find_ob(Component* arr, int size_arr)
 			std::cout << arr[i];
 		}
 	}
+}
+
+void average_price(Component* arr, int size_arr, double& average)
+{	
+	int count = 0;
+	for (int i = 0; i < size_arr; i++)
+	{
+		if (arr[i].price != NULL && arr[i].code!=NULL)
+		{
+			count++;
+			average += arr[i].price;
+		}
+	}
+	average /= count;
+}
+
+void show_average(double average)
+{
+	std::cout << "Среднее арифметическое цен: " <<
+		average <<  std::endl;
 }

@@ -18,6 +18,7 @@ enum Commands
 	DEL,
 	SORT,
 	FIND,
+	AVERAGE,
 	EXIT_COM
 };
 

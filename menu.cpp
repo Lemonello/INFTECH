@@ -28,6 +28,7 @@ void show_edit_menu()
 	cout << DEL << "\t" << "Удалить" << endl;
 	cout << SORT << "\t" << "Сортировать" << endl;
 	cout << FIND << "\t" << "Найти" << endl;
+	cout << AVERAGE << "\t" << "Подсчет среднего для цены" << endl;
 	cout << EXIT_COM << "\t" << "Выйти" << endl;
 }
 
@@ -97,6 +98,10 @@ int get_edit_command()
 		case FIND:
 		{
 			return FIND;
+		}
+		case AVERAGE:
+		{
+			return AVERAGE;
 		}
 		case EXIT_COM:
 		{
