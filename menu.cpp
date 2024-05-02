@@ -13,11 +13,11 @@ using std::endl;
 void show_menu()
 {
 	cout << "Выбор " << endl;
-	cout << 1 << "\t" << "Открыть файл" << endl;
-	cout << 2 << "\t" << "Просмотр данных" << endl;
-	cout << 3 << "\t" << "Записать файл" << endl;
-	cout << 4 << "\t" << "Записать новый файл" << endl;
-	cout << 5 << "\t" << "Выход" << endl;
+	cout << OPEN_FILE << "\t" << "Открыть файл" << endl;
+	cout << SHOW_DATA << "\t" << "Просмотр данных" << endl;
+	cout <<WRITE_TO_FILE << "\t" << "Записать файл" << endl;
+	cout << WRITE_NEW_FILE << "\t" << "Записать новый файл" << endl;
+	cout << EXIT << "\t" << "Выход" << endl;
 }
 
 void show_edit_menu()
@@ -64,6 +64,8 @@ int get_command()
 		}
 		default:
 			cout << "Введена неправильная команда" << endl;
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
 			system("pause");
 			break;
 		}
@@ -110,6 +112,8 @@ int get_edit_command()
 		default:
 		{
 			cout << "Введена неправильная команда" << endl;
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
 			system("pause");
 			break;
 		}
