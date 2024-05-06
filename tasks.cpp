@@ -6,7 +6,7 @@
 const char dot_space[3] = ". ";
 
 void tasks(Component* arr, int command, int size_arr)
-{
+{	
 	switch (command)
 	{
 	case EDIT:
@@ -75,12 +75,13 @@ int get_edit()
 }
 
 void edit_ob(Component& ob, int type)
-{
+{	
 	std::cout << "¬ведите новые данные" << std::endl;
 	if (type == MAKER)
 	{
 		char new_maker[16];
-		std::cin >> new_maker;
+		std::cin.ignore(INT_MAX, '\n');
+		std::cin.getline(new_maker,16);
 		for (int i = 0; i < 16; i++)
 		{
 			ob.maker[i] = new_maker[i];
@@ -179,18 +180,12 @@ void show_maker_enter()
 void get_find(char* find, int size_arr)
 {
 	char get[20];
-	std::cin >> get;
+	std::cin.ignore(INT_MAX, '\n');
+	std::cin.getline(get, 20);
 	for (int i = 0; i < size_arr; i++)
 	{
 		find[i] = get[i];
 	}
-}
-
-bool is_equal(Component ob, char *find)
-{
-	int result = strcmp(ob.maker,find );
-	if (result == NULL) return true;
-	return false;
 }
 
 void find_ob(Component* arr, int size_arr)
@@ -198,16 +193,19 @@ void find_ob(Component* arr, int size_arr)
 	show_maker_enter();
 	char find[20];
 	get_find(find, 20);
-
-	for (int i = 0; i < size_arr; i++)
-	{
-		bool is_s = is_equal(arr[i], find);
-		if (is_s)
+	auto it = std::find_if(arr, arr + size_arr, [=](Component ob)
 		{
-			system("cls");
-			std::cout << arr[i];
-		}
+			int result = strcmp(ob.maker, find);
+			if (result == NULL) return true;
+			return false;
+		});
+	if (it == (arr + size_arr))
+	{	
+		system("cls");
+		std::cout << "«начение не найдено"<<std::endl;
+		return;
 	}
+	std::cout << *it;
 }
 
 void average_price(Component* arr, int size_arr, double& average)
