@@ -1,5 +1,7 @@
 #include"static.h"
 
+#include<string.h>
+
 //Функция для сохранения и хранения имени файла
 
 void save_data(bool parameter, char* file)
@@ -8,20 +10,10 @@ void save_data(bool parameter, char* file)
 	static char filename[16];
 	//true, если нужно сохранить файл
 	if (parameter == SAVE)
-	{
-		for (int i = 0; i < 16; i++)
-		{
-			filename[i] = file[i];
-		}
-	}
+		strcpy_s(filename, 16, file);
 	//false, если нужно получить имя файла
 	if (parameter == GET)
-	{
-		for (int i = 0; i < 16; i++)
-		{
-			file[i] = filename[i];
-		}
-	}
+		strcpy_s(file, 16, filename);
 }
 
 //Функция для сохранения и хранения индекса свободного эл-та

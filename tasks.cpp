@@ -182,10 +182,7 @@ void get_find(char* find, int size_arr)
 	char get[20];
 	std::cin.ignore(INT_MAX, '\n');
 	std::cin.getline(get, 20);
-	for (int i = 0; i < size_arr; i++)
-	{
-		find[i] = get[i];
-	}
+	strcpy_s(find,20 ,get);
 }
 
 void find_ob(Component* arr, int size_arr)

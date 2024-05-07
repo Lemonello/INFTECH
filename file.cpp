@@ -5,6 +5,7 @@
 #include<iostream>
 #include<fstream>
 
+#include <string>
 
 void show_name_file()
 {
@@ -15,11 +16,9 @@ void get_filename(char* filename)
 {	
 	const int size = 16;
 	char file[16];
-	std::cin >> file;
-	for (int i = 0; i < size; i++)
-	{
-		filename[i] = file[i];
-	}
+	std::cin.ignore(INT_MAX, '\n');
+	std::cin.getline(file, 16);
+	strcpy_s(filename, 16, file);
 }
 
 void open_file(char* filename)
@@ -46,7 +45,7 @@ void read_data(Component* arr, char* filename, int size_arr)
 	fin.open(filename);
 	int index{-1};
 	for (int i = 0; !fin.eof() && i < size_arr; i++)
-	{
+	{	
 		fin >> arr[i];
 		index = i;
 	}
