@@ -66,9 +66,9 @@ int get_line_number(int max_size)
 int get_edit()
 {
 	std::cout << MAKER << dot_space << "Maker" << std::endl <<
-		COUNT << dot_space << "Count" << std::endl <<
-		CODE << dot_space << "Code" << std::endl <<
-		PRICE << dot_space << "Price" << std::endl;
+				 COUNT << dot_space << "Count" << std::endl <<
+				 CODE << dot_space << "Code" << std::endl <<
+				 PRICE << dot_space << "Price" << std::endl;
 	int edit;
 	std::cin >> edit;
 	return edit;
@@ -82,10 +82,7 @@ void edit_ob(Component& ob, int type)
 		char new_maker[16];
 		std::cin.ignore(INT_MAX, '\n');
 		std::cin.getline(new_maker,16);
-		for (int i = 0; i < 16; i++)
-		{
-			ob.maker[i] = new_maker[i];
-		}
+		strcpy_s(ob.maker, 16, new_maker);
 		return;
 	}
 	int value;
@@ -190,7 +187,7 @@ void find_ob(Component* arr, int size_arr)
 	show_maker_enter();
 	char find[20];
 	get_find(find, 20);
-	auto it = std::find_if(arr, arr + size_arr, [=](Component ob)
+	auto it = std::find_if(arr, arr + size_arr, [find](Component ob)
 		{
 			int result = strcmp(ob.maker, find);
 			if (result == NULL) return true;
