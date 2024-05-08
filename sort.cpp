@@ -159,7 +159,8 @@ void show_order()
 }
 
 int get_order()
-{
+{	
+
 	show_order();
 	while (true)
 	{	

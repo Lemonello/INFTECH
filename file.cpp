@@ -70,14 +70,16 @@ void show_top()
 	std::cout << std::endl;
 }
 
-void show_data(Component* arr, int size_arr)
+void show_data(Component* arr)
 {	
+	int size;
+	save_data(GET, size);
 	for (int i = 0; i < 70; i++) std::cout << "-";
 	show_top();
-	for (int i = 0; i < size_arr; i++)
+	for (int i = 0; i < size; i++)
 	{	
 		std::cout.width(5);
-		std::cout << i;
+		std::cout << (i+1);
 		std::cout << arr[i];
 	}
 	for (int i = 0; i < 70; i++) std::cout << "-";

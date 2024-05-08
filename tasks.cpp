@@ -53,14 +53,14 @@ void tasks(Component* arr, int command, int size_arr)
 int get_line_number(int max_size)
 {
 	std::cout << "Введите строку:" << std::endl;
-	int number = max_size;
+	int number = max_size+2;
 	//Защита от ввода неправильной строки
 	//Выход из программы при вводе -1
 	while (number >= (max_size+1) && number != -1)
 	{
 		std::cin >> number;
 	}
-	return number;
+	return (number-1);
 }
 
 int get_edit()

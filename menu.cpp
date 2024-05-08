@@ -139,7 +139,7 @@ void menu(Component* arr, int& size_arr)
 	}
 	case SHOW_DATA:
 	{
-		show_data(arr, size_arr);
+		show_data(arr);
 		int command = get_edit_command();
 		tasks(arr, command, size_arr);
 		system("pause");
