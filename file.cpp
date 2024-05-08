@@ -53,10 +53,27 @@ void read_data(Component* arr, char* filename, int size_arr)
 	fin.close();
 }
 
+void show_top()
+{
+	std::cout << std::endl;
+	std::cout.setf(std::ios::left);
+	std::cout << "Номер" << "|";
+	std::cout.width(15);
+	std::cout << "Произоводитель" << "|";
+	std::cout.width(15);
+	std::cout << "Количество" << "|";
+	std::cout.width(15);
+	std::cout << "Код" << "|";
+	std::cout.width(15);
+	std::cout << "Цена" << "|";
+	std::cout.unsetf(std::ios::left);
+	std::cout << std::endl;
+}
+
 void show_data(Component* arr, int size_arr)
 {	
 	for (int i = 0; i < 70; i++) std::cout << "-";
-	std::cout << std::endl;
+	show_top();
 	for (int i = 0; i < size_arr; i++)
 	{	
 		std::cout.width(5);

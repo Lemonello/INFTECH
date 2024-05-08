@@ -56,7 +56,7 @@ int get_line_number(int max_size)
 	int number = max_size;
 	//Çàùèòà îò ââîäà íåïğàâèëüíîé ñòğîêè
 	//Âûõîä èç ïğîãğàììû ïğè ââîäå -1
-	while (number >= max_size && number != -1)
+	while (number >= (max_size+1) && number != -1)
 	{
 		std::cin >> number;
 	}

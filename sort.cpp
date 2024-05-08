@@ -161,9 +161,30 @@ void show_order()
 int get_order()
 {
 	show_order();
-	int order;
-	std::cin >> order;
-	return order;
+	while (true)
+	{	
+		int order;
+		std::cin >> order;
+		switch (order)
+		{
+		case INCREASE:
+		{
+			return INCREASE;
+		}
+		case DECREASE:
+		{
+			return DECREASE;
+		}
+		default:
+		{
+			std::cout << "¬ведена неправильна€ команда" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			system("pause");
+			break;
+		}
+		}
+	}
 }
 
 int get_criteria()
