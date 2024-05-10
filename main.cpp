@@ -16,10 +16,11 @@ Component comps[6]
 int main()
 {		
 	int size = 6;
+	int index{ 5 };
 	Component* arr = comps;
+	save_data(SAVE, index);
 	save_data(SAVE, arr, size);
 	setlocale(LC_ALL, "Russian");
-	int size_arr = 6;
 	while (true) menu();
 	return 0;
 }

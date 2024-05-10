@@ -96,6 +96,7 @@ void data_to_file(char* filename)
 	Component* arr = nullptr;
 	int size_arr;
 	save_data(GET, arr, size_arr);
+	save_data(GET, size_arr);
 	std::ofstream fout;
 	fout.open(filename);
 	for (int i = 0; i < size_arr; i++)
