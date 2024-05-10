@@ -1,4 +1,5 @@
 #include"static.h"
+#include"Component.h"
 
 #include<string.h>
 
@@ -23,7 +24,25 @@ void save_data(bool parameter, int& index)
 	//6 - текущий размер массива, далее переменная меняется
 	static int empty_index{5};
 	//true, если нужно сохранить индекс 
-	if (parameter == SAVE) empty_index = index;
+	if (parameter == SAVE) 
+		empty_index = index;
 	//false, если нужно получить индекс
-	if (parameter == GET) index = empty_index;
+	if (parameter == GET) 
+		index = empty_index;
+}
+
+void save_data(bool parameter, Component* &arr_adr, int &length)
+{
+	static Component* adreess_array;
+	static int len_stat;
+	if (parameter == SAVE && arr_adr != nullptr)
+	{
+		adreess_array = arr_adr;
+		len_stat = length;
+	}
+	if (parameter == GET)
+	{
+		arr_adr = adreess_array;
+		length = len_stat;
+	}
 }

@@ -1,4 +1,5 @@
 #pragma once
+struct Component;
 
 enum SAVES
 {
@@ -8,3 +9,4 @@ enum SAVES
 
 void save_data(bool is_save, char* file);
 void save_data(bool is_save, int &index);
+void save_data(bool parameter, Component* &arr_adr, int &length);

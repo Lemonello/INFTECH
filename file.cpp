@@ -39,8 +39,11 @@ bool is_open(char* filename)
 	return open;
 }
 
-void read_data(Component* arr, char* filename, int size_arr)
+void read_data(char* filename)
 {	
+	Component* arr = nullptr;
+	int size_arr;
+	save_data(GET, arr, size_arr);
 	std::ifstream fin;
 	fin.open(filename);
 	int index{-1};
@@ -70,25 +73,29 @@ void show_top()
 	std::cout << std::endl;
 }
 
-void show_data(Component* arr)
+void show_data()
 {	
 	int size;
-	save_data(GET, size);
+	Component* arr_adr = nullptr;
+	save_data(GET,arr_adr ,size);
 	for (int i = 0; i < 70; i++) std::cout << "-";
 	show_top();
 	for (int i = 0; i < size; i++)
 	{	
 		std::cout.width(5);
 		std::cout << (i+1);
-		std::cout << arr[i];
+		std::cout << arr_adr[i];
 	}
 	for (int i = 0; i < 70; i++) std::cout << "-";
 	std::cout << std::endl;
 }
 
 
-void data_to_file(Component* arr, char* filename, int size_arr)
-{
+void data_to_file(char* filename)
+{	
+	Component* arr = nullptr;
+	int size_arr;
+	save_data(GET, arr, size_arr);
 	std::ofstream fout;
 	fout.open(filename);
 	for (int i = 0; i < size_arr; i++)
@@ -98,8 +105,11 @@ void data_to_file(Component* arr, char* filename, int size_arr)
 	fout.close();
 }
 
-void clear_arr(Component* arr, int size_arr)
-{
+void clear_arr()
+{	
+	Component* arr = nullptr;
+	int size_arr;
+	save_data(GET, arr, size_arr);
 	for (int i = 0; i < size_arr; i++)
 	{
 		null_el(arr[i]);

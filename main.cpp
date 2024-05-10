@@ -1,5 +1,6 @@
 #include"Component.h"
 #include"menu.h"
+#include"static.h"
 #include"file.h"
 
 Component comps[6]
@@ -13,9 +14,12 @@ Component comps[6]
 };
 
 int main()
-{
+{		
+	int size = 6;
+	Component* arr = comps;
+	save_data(SAVE, arr, size);
 	setlocale(LC_ALL, "Russian");
 	int size_arr = 6;
-	while (true) menu(comps, size_arr);
+	while (true) menu();
 	return 0;
 }

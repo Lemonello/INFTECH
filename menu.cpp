@@ -121,27 +121,30 @@ int get_edit_command()
 	}
 }
 
-void menu(Component* arr, int& size_arr)
+void menu()
 {
+	Component* adr_Arr=nullptr;
+	int size_arr;
+	save_data(GET, adr_Arr, size_arr);
 	int command = get_command();
 	switch (command)
 	{
 	case OPEN_FILE:
 	{	
-		clear_arr(arr, size_arr);
+		clear_arr();
 		show_name_file();
 		char file_name[16];
 		get_filename(file_name);
 		open_file(file_name);
-		read_data(arr, file_name, size_arr);
+		read_data(file_name);
 		save_data(SAVE, file_name);
 		break;
 	}
 	case SHOW_DATA:
 	{
-		show_data(arr);
+		show_data();
 		int command = get_edit_command();
-		tasks(arr, command, size_arr);
+		tasks(adr_Arr, command, size_arr);
 		system("pause");
 		break;
 	}
@@ -149,7 +152,7 @@ void menu(Component* arr, int& size_arr)
 	{
 		char file[16];
 		save_data(GET, file);
-		data_to_file(arr, file, size_arr);
+		data_to_file(file);
 		break;
 	}
 	case WRITE_NEW_FILE:
@@ -157,7 +160,7 @@ void menu(Component* arr, int& size_arr)
 		show_name_file();
 		char filename[16];
 		get_filename(filename);
-		data_to_file(arr, filename, size_arr);
+		data_to_file(filename);
 		save_data(SAVE, filename);
 		break;
 	}

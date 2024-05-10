@@ -22,7 +22,7 @@ enum Commands
 	EXIT_COM
 };
 
-void menu(Component* arr, int& size_arr);
+void menu();
 void show_menu();
 int get_command();
 int get_edit_command();
