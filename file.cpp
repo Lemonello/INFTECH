@@ -48,6 +48,7 @@ void read_data(char* filename)
 	fin.open(filename);
 	for (int i = 0; !fin.eof() && i < size_arr; i++)
 	{	
+		if (arr[i].count == NULL && arr[i].price == NULL) continue;
 		fin >> arr[i];
 	}
 	fin.close();
@@ -98,6 +99,7 @@ void data_to_file(char* filename)
 	fout.open(filename);
 	for (int i = 0; i < size_arr; i++)
 	{
+		if (arr[i].count == NULL && arr[i].price == NULL) break;
 		fout << arr[i];
 	}
 	fout.close();

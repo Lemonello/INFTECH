@@ -9,56 +9,6 @@ enum ORDER
 	INCREASE
 };
 
-//Все функции-компараторы для сортировки в порядке возрастания
-
-bool inc_comp_maker(Component ob1, Component ob2)
-{
-	int result = strcmp(ob1.maker, ob2.maker);
-	if (result == NULL) return false;
-	if (result < NULL) return  false;
-	if (result > NULL) return true;
-}
-
-bool inc_comp_count(Component ob1, Component ob2)
-{
-	return ob1.count < ob2.count;
-}
-
-bool inc_comp_code(Component ob1, Component ob2)
-{
-	return ob1.code < ob2.code;
-}
-
-bool inc_comp_price(Component ob1, Component ob2)
-{
-	return ob1.price < ob2.price;
-}
-
-//Все функции-компараторы для сравнения в порядке убывания
-
-bool dec_comp_maker(Component ob1, Component ob2)
-{
-	int result = strcmp(ob1.maker, ob2.maker);
-	if (result == NULL) return false;
-	if (result < NULL) return  true;
-	if (result > NULL) return false;
-}
-
-bool dec_comp_count(Component ob1, Component ob2)
-{
-	return ob1.count > ob2.count;
-}
-
-bool dec_comp_code(Component ob1, Component ob2)
-{
-	return ob1.code > ob2.code;
-}
-
-bool dec_comp_price(Component ob1, Component ob2)
-{
-	return ob1.price > ob2.price;
-}
-
 //Функция для определения критерия и порядка сортировки
 
 void sort_data(Component* arr, int size_arr)
@@ -92,22 +42,36 @@ void decrease_order(Component* arr, int size_arr, int crit)
 	{
 	case MAKER:
 	{
-		std::sort(arr,arr+size_arr, dec_comp_maker);
+		std::sort(arr, arr + size_arr, [](Component &ob1, Component &ob2) 
+			{
+			int result = strcmp(ob1.maker, ob2.maker);
+			if (result < NULL) return  true;
+			return false;
+			});
 		return;
 	}
 	case COUNT:
 	{
-		std::sort(arr, arr + size_arr, dec_comp_count);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2) 
+			{
+				return ob1.count > ob2.count;
+			});
 		return;
 	}
 	case CODE:
 	{
-		std::sort(arr, arr + size_arr, dec_comp_code);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2) 
+			{
+				return ob1.code > ob2.code;
+			});
 		return;
 	}
 	case PRICE:
 	{
-		std::sort(arr, arr + size_arr, dec_comp_price);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2) 
+			{
+				return ob1.price > ob2.price;
+			});
 		return;
 	}
 	}
@@ -121,22 +85,36 @@ void increase_order(Component* arr, int size_arr, int crit)
 	{
 	case MAKER:
 	{
-		std::sort(arr, arr + size_arr, inc_comp_maker);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2)
+			{
+				int result = strcmp(ob1.maker, ob2.maker);
+				if (result > NULL) return true;
+				return false;
+			});
 		return;
 	}
 	case COUNT:
 	{
-		std::sort(arr, arr + size_arr, inc_comp_count);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2)
+			{
+				return ob1.count < ob2.count;
+			});
 		return;
 	}
 	case CODE:
 	{
-		std::sort(arr, arr + size_arr, inc_comp_code);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2)
+			{
+				return ob1.code < ob2.code;
+			});
 		return;
 	}
 	case PRICE:
 	{
-		std::sort(arr, arr + size_arr, inc_comp_price);
+		std::sort(arr, arr + size_arr, [](Component& ob1, Component& ob2)
+			{
+				return ob1.price < ob2.price;
+			});
 		return;
 	}
 	}
