@@ -161,19 +161,22 @@ void find_ob(Component* arr, int size_arr)
 	show_maker_enter();
 	char find[20];
 	get_find(find, 20);
-	auto it = std::find_if(arr, arr + size_arr, [find](Component ob)
+	int size_find = strlen(find);
+	int count{ 0 };
+	for (int i = 0; i < size_arr; i++)
+	{
+		int result = strncmp(find, arr[i].maker, size_find);
+		if (result == NULL)
 		{
-			int result = strcmp(ob.maker, find);
-			if (result == NULL) return true;
-			return false;
-		});
-	if (it == (arr + size_arr))
-	{	
-		system("cls");
-		std::cout << "Значение не найдено"<<std::endl;
+			std::cout << arr[i];
+			++count;
+		}
+	}
+	if (count == 0)
+	{
+		std::cout << "Значение не найдено" << std::endl;
 		return;
 	}
-	std::cout << *it;
 }
 
 void average_price(Component* arr, int size_arr, double& average)
