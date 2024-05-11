@@ -18,8 +18,6 @@ int get_edit();
 void edit_ob(Component& ob, int type);
 void edit_data(Component* arr, int size_arr);
 void del_data(Component* arr, int index);
-
-bool is_possible(int size_arr);
 void add_data(Component* arr, int size_arr);
 
 void null_el(Component& ob);

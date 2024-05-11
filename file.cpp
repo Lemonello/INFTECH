@@ -79,6 +79,7 @@ void show_data()
 	show_top();
 	for (int i = 0; i < size; i++)
 	{	
+		if (arr_adr[i].count == NULL && arr_adr[i].price == NULL) break;
 		std::cout.width(5);
 		std::cout << (i+1);
 		std::cout << arr_adr[i];
