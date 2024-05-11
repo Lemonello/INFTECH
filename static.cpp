@@ -17,19 +17,6 @@ void save_data(bool parameter, char* file)
 		strcpy_s(file, 16, filename);
 }
 
-//Функция для сохранения и хранения индекса свободного эл-та
-
-void save_data(bool parameter, int& index)
-{	
-	static int empty_index;
-	//true, если нужно сохранить индекс 
-	if (parameter == SAVE) 
-		empty_index = index;
-	//false, если нужно получить индекс
-	if (parameter == GET) 
-		index = empty_index;
-}
-
 void save_data(bool parameter, Component* &arr_adr, int &length)
 {
 	static Component* adreess_array;

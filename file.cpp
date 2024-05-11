@@ -46,13 +46,10 @@ void read_data(char* filename)
 	save_data(GET, arr, size_arr);
 	std::ifstream fin;
 	fin.open(filename);
-	int index{-1};
 	for (int i = 0; !fin.eof() && i < size_arr; i++)
 	{	
 		fin >> arr[i];
-		index = i;
 	}
-	save_data(SAVE, index);
 	fin.close();
 }
 
@@ -96,7 +93,6 @@ void data_to_file(char* filename)
 	Component* arr = nullptr;
 	int size_arr;
 	save_data(GET, arr, size_arr);
-	save_data(GET, size_arr);
 	std::ofstream fout;
 	fout.open(filename);
 	for (int i = 0; i < size_arr; i++)

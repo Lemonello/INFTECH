@@ -106,41 +106,25 @@ void del_data(Component* arr, int index)
 	null_el(arr[index]);
 }
 
-bool is_possible(int size_arr)
-{
-	int feauture_index; 
-	save_data(GET, feauture_index);
-	//++ потому что функция save_data возвращает 
-	//текущее положение индекса, т.е. индекс уже занятого
-	//элемента массива, а нам нужен следующий
-	if (feauture_index >= size_arr) return false;
-	return true;
-}
-
 void add_data(Component* arr, int size_arr)
 {
-	bool is_pos = is_possible(size_arr);
-	if (!is_pos)
+	auto index = std::find_if(arr, arr + size_arr, [](Component ob) {
+		if (ob.code == NULL && ob.count == NULL && ob.price == NULL)
+			return true;
+		return false;
+		});
+	if (index != (arr + size_arr))
 	{
-		std::cout << "Нет места в массиве" << std::endl;
+		std::cin >> *index;
 		return;
 	}
-	int ind_arr;
-	save_data(GET, ind_arr);
-	//Проверку на границы уже выполнила функция is_possible
-	std::cin >> arr[ind_arr];
-	//После добавления элемента увеличиваем индекс на 1
-	ind_arr++;
-	save_data(SAVE, ind_arr);
+	std::cout << "Нет места в массиве" << std::endl;
 }
 
 void null_el(Component& ob)
 {
 	char null_arr[16]{ "" };
-	for (int i = 0; i < 16; i++)
-	{
-		ob.maker[i] = null_arr[i];
-	}
+	strcpy_s(ob.maker, 16, null_arr);
 	ob.count = NULL;
 	ob.code = NULL;
 	ob.price = NULL;
@@ -154,23 +138,9 @@ void shrink_to_left(Component* arr, int size_arr, int index)
 	for (int i = index; (i+1) < size_arr; i++)
 	{
 		arr[i] = arr[i + 1];
-	}
-	int get_ind;
-	//Получаем текущий индекс
-	save_data(GET, get_ind);
-	//Если получаем последний элемент массива, то нет смысла
-	//отнимать от индекса 1.
-	if (index != get_ind)
-	{
-		//Минус 1, потому что удалили элемент-> можем добавлять
-		//следующие элементы массива с меньших индексов
-		get_ind--;
-		//Установка индекса с помощью функции
-		save_data(SAVE, get_ind);
-	}
-	int null_element = (size_arr - 1);
-	//Обнуляем последний элемент массива, чтобы не было дублирований
-	null_el(arr[null_element]);
+	}		
+	int null_index = --size_arr;
+	null_el(arr[null_index]);
 }
 
 void show_maker_enter()
