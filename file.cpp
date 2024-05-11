@@ -48,7 +48,6 @@ void read_data(char* filename)
 	fin.open(filename);
 	for (int i = 0; !fin.eof() && i < size_arr; i++)
 	{	
-		if (arr[i].count == NULL && arr[i].price == NULL) continue;
 		fin >> arr[i];
 	}
 	fin.close();
