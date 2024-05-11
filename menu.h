@@ -13,6 +13,7 @@ enum Menu
 
 enum Commands
 {
+	EXIT_MENU=-1,
 	EDIT = 1,
 	ADD,
 	DEL,

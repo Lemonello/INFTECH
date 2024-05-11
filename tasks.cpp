@@ -25,6 +25,7 @@ void tasks(Component* arr, int command, int size_arr)
 	case DEL:
 	{
 		int number = get_line_number(size_arr);
+		if (number == EXIT_MENU) break;
 		del_data(arr, number);
 		shrink_to_left(arr, size_arr, number);
 		break;
@@ -55,23 +56,25 @@ void tasks(Component* arr, int command, int size_arr)
 
 int get_line_number(int max_size)
 {
-	std::cout << "Введите строку:" << std::endl;
+	std::cout << "Введите строку или -1, чтобы выйти" << std::endl;
 	int number = max_size+2;
 	//Защита от ввода неправильной строки
 	//Выход из программы при вводе -1
-	while (number >= (max_size+1) && number != -1)
+	while (number >= (max_size+1) && number != EXIT_MENU)
 	{
 		std::cin >> number;
 	}
+	if (number == EXIT_MENU) return EXIT_MENU;
 	return (number-1);
 }
 
 int get_edit()
 {
 	std::cout << MAKER << dot_space << "Maker" << std::endl <<
-				 COUNT << dot_space << "Count" << std::endl <<
-				 CODE << dot_space << "Code" << std::endl <<
-				 PRICE << dot_space << "Price" << std::endl;
+		COUNT << dot_space << "Count" << std::endl <<
+		CODE << dot_space << "Code" << std::endl <<
+		PRICE << dot_space << "Price" << std::endl <<
+		EXIT_MENU << dot_space << "Exit" << std::endl;
 	int edit;
 	std::cin >> edit;
 	return edit;
@@ -99,7 +102,9 @@ void edit_data(Component* arr, int size_arr)
 {
 	int max = size_arr;
 	int number_line = get_line_number(max);
+	if (number_line == EXIT_MENU) return;
 	int edit_c = get_edit();
+	if (edit_c == EXIT_MENU) return;
 	edit_ob(arr[number_line], edit_c);
 }
 
@@ -115,12 +120,20 @@ void add_data(Component* arr, int size_arr)
 			return true;
 		return false;
 		});
+	if (index == (arr + size_arr))
+	{
+		std::cout << "Нет места в массиве" << std::endl;
+		return;
+	}
+	int command;
+	std::cout << EXIT_MENU <<dot_space<< "Выход" << std::endl;
+	std::cin >> command;
+	if (command == EXIT_MENU) return;
 	if (index != (arr + size_arr))
 	{
 		std::cin >> *index;
 		return;
 	}
-	std::cout << "Нет места в массиве" << std::endl;
 }
 
 void null_el(Component& ob)
