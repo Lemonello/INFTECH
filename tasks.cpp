@@ -1,4 +1,5 @@
 #include"tasks.h"
+#include"file.h"
 #include"static.h"
 #include"sort.h"
 #include<iostream>
@@ -7,6 +8,8 @@ const char dot_space[3] = ". ";
 
 void tasks(Component* arr, int command, int size_arr)
 {	
+	system("cls");
+	show_data();
 	switch (command)
 	{
 	case EDIT:
@@ -96,7 +99,6 @@ void edit_data(Component* arr, int size_arr)
 {
 	int max = size_arr;
 	int number_line = get_line_number(max);
-	system("cls");
 	int edit_c = get_edit();
 	edit_ob(arr[number_line], edit_c);
 }

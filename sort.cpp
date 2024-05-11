@@ -14,10 +14,7 @@ enum ORDER
 void sort_data(Component* arr, int size_arr)
 {
 	int criteria = get_criteria();
-	system("cls");
 	int order = get_order();
-	system("cls");
-
 	switch (order)
 	{
 	case DECREASE:
