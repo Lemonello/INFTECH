@@ -69,14 +69,22 @@ int get_line_number(int max_size)
 }
 
 int get_edit()
-{
+{	
 	std::cout << MAKER << dot_space << "Maker" << std::endl <<
 		COUNT << dot_space << "Count" << std::endl <<
 		CODE << dot_space << "Code" << std::endl <<
 		PRICE << dot_space << "Price" << std::endl <<
 		EXIT_MENU << dot_space << "Exit" << std::endl;
 	int edit;
-	std::cin >> edit;
+	do
+	{	
+		std::cout << "¬ведите тип данных, который нужно редактировать: ";
+		std::cin.clear();
+		std::cin.ignore(INT_MAX, '\n');
+		std::cin >> edit;
+
+	} while (edit!=MAKER&& edit!=COUNT &&edit!=CODE&&
+		edit!=PRICE&&edit!=EXIT_MENU);
 	return edit;
 }
 
