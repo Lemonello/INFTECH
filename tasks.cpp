@@ -83,8 +83,11 @@ int get_edit()
 		std::cin.ignore(INT_MAX, '\n');
 		std::cin >> edit;
 
-	} while (edit!=MAKER&& edit!=COUNT &&edit!=CODE&&
-		edit!=PRICE&&edit!=EXIT_MENU);
+	} while (edit!=MAKER&& 
+			edit!=COUNT &&
+			edit!=CODE&&
+			edit!=PRICE&&
+			edit!=EXIT_MENU);
 	return edit;
 }
 

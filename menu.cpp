@@ -74,9 +74,11 @@ int get_command()
 
 int get_edit_command()
 {
-	show_edit_menu();
 	while (true)
-	{
+	{	
+		system("cls");
+		show_data();
+		show_edit_menu();
 		int command;
 		cin >> command;
 		switch (command)
@@ -141,8 +143,8 @@ void menu()
 		break;
 	}
 	case SHOW_DATA:
-	{
-		show_data();
+	{	
+		system("cls");
 		int command = get_edit_command();
 		tasks(adr_Arr, command, size_arr);
 		system("pause");
