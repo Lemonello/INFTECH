@@ -14,3 +14,4 @@ void cin_Component(Component& ob);
 
 void clear_arr();
 void data_to_file(char* filename);
+void generate_str(const Component& ob, std::ostringstream& str);

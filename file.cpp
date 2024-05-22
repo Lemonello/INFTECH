@@ -4,7 +4,7 @@
 #include"static.h"
 #include<iostream>
 #include<fstream>
-
+#include<sstream>
 #include <string>
 
 void show_name_file()
@@ -104,10 +104,9 @@ void data_to_file(char* filename)
 	for (int i = 0; i < size_arr; i++)
 	{
 		if (arr[i].count == NULL && arr[i].price == NULL) break;
-		fout << arr[i].maker << std::endl;
-		fout << arr[i].count << std::endl;
-		fout << arr[i].code << std::endl;
-		fout << arr[i].price << std::endl;
+		std::ostringstream out_str;
+		generate_str(arr[i], out_str);
+		fout << out_str.str();
 	}
 	fout.close();
 }
@@ -150,4 +149,10 @@ void cin_Component(Component& ob)
 	std::cin >> ob.code;
 	std::cout << "¬ведите цену:" << std::endl;
 	std::cin >> ob.price;
+}
+
+void generate_str(const Component& ob, std::ostringstream& str)
+{			
+	str << ob.maker << " " << ob.count << " " <<
+		ob.code << " " << ob.price << std::endl;
 }
