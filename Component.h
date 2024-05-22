@@ -23,8 +23,6 @@ struct Component
 	bool is_empty{ 0 }; 
 
 	//Перегрузка операторов консольного и файлового ввода и вывода
-	friend ostream& operator<<(ostream& stream, Component ob);
-	friend istream& operator>>(istream& stream, Component& ob);
 	friend ofstream&  operator<<(ofstream& stream, Component ob);
 	friend ifstream& operator>>(ifstream& stream, Component& ob);
 

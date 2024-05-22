@@ -48,7 +48,10 @@ void read_data(char* filename)
 	fin.open(filename);
 	for (int i = 0; !fin.eof() && i < size_arr; i++)
 	{	
-		fin >> arr[i];
+		fin>> arr[i].maker;
+		fin>> arr[i].count;
+		fin>> arr[i].code;
+		fin>> arr[i].price;
 	}
 	fin.close();
 }
@@ -82,7 +85,7 @@ void show_data()
 		if (arr_adr[i].count == NULL && arr_adr[i].price == NULL) break;
 		std::cout.width(5);
 		std::cout << (i+1);
-		std::cout << arr_adr[i];
+		cout_Component(arr_adr[i]);
 	}
 	for (int i = 0; i < 70; i++) std::cout << "-";
 	std::cout << std::endl;
@@ -99,7 +102,10 @@ void data_to_file(char* filename)
 	for (int i = 0; i < size_arr; i++)
 	{
 		if (arr[i].count == NULL && arr[i].price == NULL) break;
-		fout << arr[i];
+		fout << arr[i].maker << std::endl;
+		fout << arr[i].count << std::endl;
+		fout << arr[i].code << std::endl;
+		fout << arr[i].price << std::endl;
 	}
 	fout.close();
 }
@@ -113,4 +119,33 @@ void clear_arr()
 	{
 		null_el(arr[i]);
 	}
+}
+
+const char symb = '|';
+
+void cout_Component(const Component& ob)
+{
+	std::cout<< symb;
+	std::cout.setf(std::ios::left);
+	std::cout.width(15);
+	std::cout<< ob.maker << symb;
+	std::cout.width(15);
+	std::cout<< ob.count << symb;
+	std::cout.width(15);
+	std::cout<< ob.code << symb;
+	std::cout.width(15);
+	std::cout<< ob.price << symb << std::endl;
+	std::cout.unsetf(std::ios::left);
+}
+
+void cin_Component(Component& ob)
+{	
+	std::cout << "¬ведите название:" << std::endl;
+	std::cin >> ob.maker;
+	std::cout << "¬ведите количество:" << std::endl;
+	std::cin >> ob.count;
+	std::cout << "¬ведите код:" << std::endl;
+	std::cin >> ob.code;
+	std::cout << "¬ведите цену:" << std::endl;
+	std::cin >> ob.price;
 }

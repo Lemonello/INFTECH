@@ -18,7 +18,7 @@ void tasks(Component* arr, int command, int size_arr)
 		break;
 	}
 	case ADD:
-	{
+	{	
 		add_data(arr, size_arr);
 		break;
 	}
@@ -137,12 +137,14 @@ void add_data(Component* arr, int size_arr)
 		return;
 	}
 	int command;
-	std::cout << EXIT_MENU <<dot_space<< "Выход" << std::endl;
+	std::cout << EXIT_MENU << dot_space <<
+		"Выход" << std::endl << 0 << dot_space << "Продолжить" << std::endl;
 	std::cin >> command;
 	if (command == EXIT_MENU) return;
+	if (command == 0);
 	if (index != (arr + size_arr))
 	{
-		std::cin >> *index;
+		cin_Component(*index);
 		return;
 	}
 }
@@ -194,7 +196,7 @@ void find_ob(Component* arr, int size_arr)
 		int result = strncmp(find, arr[i].maker, size_find);
 		if (result == NULL)
 		{
-			std::cout << arr[i];
+			cout_Component(arr[i]);
 			++count;
 		}
 	}
