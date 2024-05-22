@@ -15,10 +15,10 @@ Component comps[6]
 
 int main()
 {		
+	system("chcp 1251");
 	int size = 6;
 	Component* arr = comps;
 	save_data(SAVE, arr, size);
-	setlocale(LC_ALL, "Russian");
 	while (true) menu();
 	return 0;
 }

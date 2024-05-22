@@ -15,9 +15,11 @@ void show_name_file()
 void get_filename(char* filename)
 {	
 	const int size = 16;
-	char file[16];
+	char file[50];
 	std::cin.ignore(INT_MAX, '\n');
 	std::cin.getline(file, 16);
+	char extension[5]{ ".txt" };
+	strcat_s(file, extension);
 	strcpy_s(filename, 16, file);
 }
 

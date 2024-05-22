@@ -6,6 +6,7 @@
 
 const char dot_space[3] = ". ";
 
+
 void tasks(Component* arr, int command, int size_arr)
 {	
 	system("cls");
@@ -191,11 +192,19 @@ void find_ob(Component* arr, int size_arr)
 	get_find(find, 20);
 	int size_find = strlen(find);
 	int count{ 0 };
+	bool flag_show = false;
 	for (int i = 0; i < size_arr; i++)
 	{
 		int result = strncmp(find, arr[i].maker, size_find);
 		if (result == NULL)
-		{
+		{	
+			if (!flag_show)
+			{
+				flag_show = true;
+				show_top();
+			}
+			std::cout.width(5);
+			std::cout << (i + 1);
 			cout_Component(arr[i]);
 			++count;
 		}
